@@ -4,7 +4,7 @@ clouddriver:
   environment:
     - AWS_ACCESS_KEY_ID
     - AWS_SECRET_ACCESS_KEY
-    - "SERVICES_FRONT50_BASEURL=http://$DOCKER_IP:8080"
+    - "SERVICES_FRONT50_BASEURL=http://pwd10-0-2-3-8080.host2.host2.host2.labs.play-with-docker.com"
   image: quay.io/spinnaker/clouddriver:master
   links:
     - redis
@@ -13,12 +13,12 @@ clouddriver:
 deck:
   container_name: deck
   environment:
-    - "API_HOST=http://$DOCKER_IP:8084"
+    - "API_HOST=http://pwd10-0-2-3-8084.host2.host2.host2.labs.play-with-docker.com"
     - DECK_HOST=0.0.0.0
     - DECK_PORT=9000
     - PROTOCOL=http
     - AUTH_ENABLED=false
-    - "AUTH_ENDPOINT=http://$DOCKER_IP:8084/auth/user"
+    - "AUTH_ENDPOINT=http://pwd10-0-2-3-8084.host2.host2.host2.labs.play-with-docker.com/auth/user"
   image: quay.io/spinnaker/deck:master
   ports:
     - "9000:9000"
@@ -26,8 +26,8 @@ echo:
   container_name: echo
   env_file: ./compose.env
   environment:
-    - "FRONT50_BASEURL=http://$DOCKER_IP:8080"
-    - "ORCA_BASEURL=http://$DOCKER_IP:8083"
+    - "FRONT50_BASEURL=http://pwd10-0-2-3-8080.host2.host2.host2.labs.play-with-docker.com"
+    - "ORCA_BASEURL=http://pwd10-0-2-3-8083.host2.host2.host2.labs.play-with-docker.com"
     - "JAVA_OPTS=-javaagent:/opt/echo/lib/jamm-0.2.5.jar"
   image: quay.io/spinnaker/echo:master
   ports:
